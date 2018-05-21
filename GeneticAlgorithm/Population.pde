@@ -57,16 +57,7 @@ class Population {
   }
   
   Bot selectParent() {
-    float rand = random(calculateFitnessSum());
-    
-    float runningSum = 0;
-    for (Bot bot : bots) {
-      runningSum += bot.fitness;
-      if (runningSum > rand) {
-        return bot;
-      }
-    }
-    return null;
+    // TODO: Finish later
   }
   
   void mutateGeneration() {
