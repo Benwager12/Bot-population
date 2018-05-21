@@ -1,10 +1,12 @@
 Population bots;
 PVector goal;
+Obstacle obs;
 
 void setup() {
   size(500, 500);
   goal = new PVector(width / 2, 10);
-  bots = new Population(100, goal);
+  bots = new Population(200, goal);
+  
 }
 
 void draw() {

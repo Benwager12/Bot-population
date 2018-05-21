@@ -3,6 +3,7 @@ class Bot {
   Brain brain;
   boolean dead = false, reachedGoal = false, isBest = false;
   float fitness;
+  Obstacle obs;
   
   public Bot(int complexity, PVector goal) {
     brain = new Brain(complexity);
@@ -19,6 +20,7 @@ class Bot {
     position = new PVector(width/2, height-10);
     velocity = new PVector(0,0);
     acceleration = velocity;
+    obs = new Obstacle((width / 2) - 100, (height / 2) + 30, (width / 2) + 100, (height / 2) - 30);
   }
   
   void show() {
@@ -28,6 +30,7 @@ class Bot {
       fill(0);
     }
     ellipse(position.x, position.y, 4, 4);
+    obs.show();
   }
   
   void move() {
@@ -35,6 +38,8 @@ class Bot {
       acceleration = brain.directions[brain.step];
       brain.step++;
     } else dead = true;
+    if (obs.collided(position)) dead = true;
+    
     velocity.add(acceleration);
     velocity.limit(5);
     position.add(velocity);

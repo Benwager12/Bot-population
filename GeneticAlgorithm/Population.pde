@@ -55,14 +55,6 @@ class Population {
     generation++;
   }
   
-  int calculateFitnessSum() {
-    int fitnessSum = 0;
-    for (Bot bot : bots) {
-      fitnessSum += bot.fitness;
-    }
-    return fitnessSum;
-  }
-  
   Bot selectParent() {
     int randomBrain = floor(random(genepool.size()));
     return new Bot(genepool.get(randomBrain),goal);
