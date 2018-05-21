@@ -14,7 +14,7 @@ void draw() {
   
   if (bots.allBotsDead()) {
     bots.calculateFitness();
-    bots.naturalSelection();
+    bots.selectParent();
     bots.mutateGeneration();
   } else {
     bots.update();

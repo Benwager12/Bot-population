@@ -1,11 +1,8 @@
-import java.util.*;
-
 class Bot {
   PVector acceleration, position, velocity, goal;;
   Brain brain;
   boolean dead = false, reachedGoal = false, isBest = false;
   float fitness;
-  ArrayList<Brain> genepool ;
   
   public Bot(int complexity, PVector goal) {
     brain = new Brain(complexity);
@@ -22,7 +19,6 @@ class Bot {
     position = new PVector(width/2, height-10);
     velocity = new PVector(0,0);
     acceleration = velocity;
-    genepool = new ArrayList<Brain>();
   }
   
   void show() {
@@ -58,10 +54,10 @@ class Bot {
   void calculateFitness() {
     float distanceToGoal = dist(position.x, position.y, goal.x, goal.y);
     
-    for (int i = 0; i < ceil((width / 2) / distanceToGoal); i++) {
-      genepool.add(brain);
-    }
-    for (Brain b : genepool) println(b);
+    fitness = ceil((width/2) / distanceToGoal);
+    //for (int i = 0; i < ceil((width / 2) / distanceToGoal); i++) {
+    //  genepool.add(brain);
+    //}
   }
   
   Bot baby() {
