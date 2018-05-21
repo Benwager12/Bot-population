@@ -55,9 +55,6 @@ class Bot {
     float distanceToGoal = dist(position.x, position.y, goal.x, goal.y);
     
     fitness = ceil((width/2) / distanceToGoal);
-    //for (int i = 0; i < ceil((width / 2) / distanceToGoal); i++) {
-    //  genepool.add(brain);
-    //}
   }
   
   Bot baby() {

@@ -2,9 +2,11 @@ class Population {
   Bot[] bots;
   int generation = 0, bestBot = 0;
   ArrayList<Brain> genepool;
+  PVector goal;
   
   public Population(int size, PVector goal) {
     bots = new Bot[size];
+    this.goal = goal;
     for (int i = 0; i < size; i++) {
       bots[i] = new Bot(400, goal);
     }
@@ -33,6 +35,9 @@ class Population {
   void calculateFitness() {
     for (Bot bot : bots) {
       bot.calculateFitness();
+      for (int i = 0; i < bot.fitness; i++) {
+       genepool.add(bot.brain);
+      }
     }
   }
   
@@ -43,8 +48,8 @@ class Population {
     newBots[0].isBest = true;
     
     for (int i = 1; i < newBots.length; i++) {
-      // Bot parent = selectParent();
-      // newBots[i] = parent.baby();
+      Bot parent = selectParent();
+      newBots[i] = parent.baby();
     }
     bots = newBots.clone();
     generation++;
@@ -58,10 +63,9 @@ class Population {
     return fitnessSum;
   }
   
-  void selectParent() {
-    // TODO: Finish later
-    ceil(random(1)*bots.length);
-    
+  Bot selectParent() {
+    int randomBrain = floor(random(genepool.size()));
+    return new Bot(genepool.get(randomBrain),goal);
   }
   
   void mutateGeneration() {

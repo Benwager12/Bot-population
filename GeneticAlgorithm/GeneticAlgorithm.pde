@@ -13,8 +13,9 @@ void draw() {
   ellipse(goal.x, goal.y, 4, 4);
   
   if (bots.allBotsDead()) {
+    bots.genepool = new ArrayList<Brain>();
     bots.calculateFitness();
-    bots.selectParent();
+    bots.naturalSelection();
     bots.mutateGeneration();
   } else {
     bots.update();
