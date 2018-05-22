@@ -65,14 +65,9 @@ class Population {
   }
   
   void setBestBot() {
-    float max = 0;
-    int maxIndex = 0;
-    for (int i = 1; i < bots.length; i++) {
-      if (bots[i].fitness < max) {
-        max = bots[i].fitness;
-        maxIndex = i;
-      }
+    Bot bestBot;
+    for (Bot bot : bots) {
+      // TODO: Finish function, has to do because in the previous update it was incorrect.
     }
-    bestBot = maxIndex;
   }
 }

@@ -26,7 +26,7 @@ void draw() {
 }
 
 void mouseClicked() {
-  for (int i = 0; i < 500; i++) {
+  for (int i = 0; i < 10000; i++) {
     if (bots.allBotsDead()) {
       nextGen();
     } else bots.update();
